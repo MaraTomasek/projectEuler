@@ -2,9 +2,8 @@ namespace ConsoleApp1;
 
 static class Program {
     public static void Main(string[] args) {
-        Console.WriteLine("hi?");
-        int   projectNumber     = 2;
-        int[] completedProblems = new int[] {1, 2, 3};
+        int       projectNumber     = Convert.ToInt32(args[0]);
+        List<int> completedProblems = new List<int>() {1, 2, 3};
 
         if (completedProblems.Contains(projectNumber)) {
             Console.WriteLine("Solution to Problem {0}: {1}", projectNumber, RunProblem(projectNumber));
@@ -17,7 +16,7 @@ static class Program {
     }
 
     private static int RunProblem(int projectNumber) {
-        Problem p = null;
+        Problem? p = null;
 
         switch (projectNumber) {
             case 1:
@@ -31,9 +30,6 @@ static class Program {
                 break;
         }
 
-        if (p != null) {
-            return p.Main();
-        }
-        return 0;
+        return p!.Main();
     }
 }
