@@ -17,9 +17,10 @@ class Problem2 : Problem {
         Queue<int> summands = new Queue<int>();
         summands.Enqueue(1);
         summands.Enqueue(2);
-
-        for (int i = 0; i < n; i++) {
-            int nextFibonacci = sumQueue(summands);
+        int nextFibonacci = 3;
+        
+        while (nextFibonacci < n) {
+            nextFibonacci = sumQueue(summands);
             summands.Enqueue(nextFibonacci);
             summands.Dequeue();
 
