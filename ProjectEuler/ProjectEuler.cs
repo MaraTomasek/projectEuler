@@ -3,7 +3,7 @@ namespace ConsoleApp1;
 static class Program {
     public static void Main(string[] args) {
         int       projectNumber     = Convert.ToInt32(args[0]);
-        List<int> completedProblems = new List<int>() {1, 2, 3};
+        List<int> completedProblems = new List<int>() {1, 2, 3, 4};
 
         if (completedProblems.Contains(projectNumber)) {
             Console.WriteLine("Solution to Problem {0}: {1}", projectNumber, RunProblem(projectNumber));
@@ -27,6 +27,9 @@ static class Program {
                 break;
             case 3:
                 p = new Problem3();
+                break;
+            case 4:
+                p = new Problem4();
                 break;
         }
 
