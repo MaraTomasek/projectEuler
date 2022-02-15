@@ -9,56 +9,42 @@ class Problem3 : Problem {
 
             What is the largest prime factor of the number 600851475143 ? */
 
-        const long example              = 13195;
-        //const long exampleLargestFactor = 29;
+        const long toCheck = 600851475143;
 
-        //const long toCheck = 600851475143;
-
-        List<long> primeFactors = GetPrimeFactors(example);
+        List<long> primeFactors = GetPrimeFactors(toCheck);
         primeFactors.Sort();
-        
-        foreach (var factor in primeFactors) {
-            Console.WriteLine(factor);
-        }
 
         return Convert.ToInt32(primeFactors.Last());
     }
 
     private List<long> GetPrimeFactors(long number) {
-        List<long>             factors      = new List<long>();
+        Queue<long>            factors      = new Queue<long>();
         List<long>             primeFactors = new List<long>();
         Dictionary<long, bool> isPrimeCache = new Dictionary<long, bool>();
-        factors.Add(number);
+        factors.Enqueue(number);
 
-        foreach (var factor in factors) {
-            if (factors.Count == 0) {
-                return primeFactors;
-            }
+        while (factors.Count() > 0){
+            var factor = factors.Dequeue();
 
             // If key is cached, move to result list to avoid double checking same factors repeatedly
+            // NOTE: Caching is sadly unnecessary here
             if (isPrimeCache.ContainsKey(factor)) {
                 if (isPrimeCache[factor]) {
-                    factors.Remove(factor);
                     primeFactors.Add(factor);
-                    continue;
+                }
+            } else {
+                var smallFactor = GetSmallestDivisor(factor);
+                if (smallFactor == PRIME) {
+                    primeFactors.Add(factor);
+                    isPrimeCache.Add(factor, true);
+                } else {
+                    factors.Enqueue(smallFactor);
+                    factors.Enqueue(factor / smallFactor);
                 }
             }
-
-            // Else
-            var smallFactor = GetSmallestDivisor(factor);
-            if (smallFactor == PRIME) {
-                primeFactors.Add(factor);
-                isPrimeCache.Add(factor, true);
-            }
-            else {
-                factors.Add(smallFactor);
-                factors.Add(factor / smallFactor);
-            }
-
-            factors.Remove(factor);
         }
 
-        return new List<long>();
+        return primeFactors;
     }
 
     private long GetSmallestDivisor(long number) {
