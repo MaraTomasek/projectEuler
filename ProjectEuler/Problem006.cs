@@ -26,7 +26,7 @@ public class Problem6 : Problem {
 
         squareOfSum = Convert.ToInt32(Math.Pow(squareOfSum, 2));
         difference  = squareOfSum - sumOfSquares;
-        
+
         return difference.ToString();
     }
 }

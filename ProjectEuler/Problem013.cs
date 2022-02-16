@@ -234,8 +234,7 @@ public class Problem13 : Problem {
         if (number1.Length >= number2.Length) {
             n1 = number1;
             n2 = number2;
-        }
-        else {
+        } else {
             n1 = number2;
             n2 = number1;
         }
@@ -270,13 +269,11 @@ public class Problem13 : Problem {
                     n3.Append(sum % 10);
                     carry = sum / 10;
                 }
-            }
-            else {
+            } else {
                 n3.Append(carry);
                 carry = 0;
             }
-        }
-        else {
+        } else {
             n3.Append(s1);
         }
 

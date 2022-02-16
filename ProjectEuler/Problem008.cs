@@ -57,7 +57,7 @@ public class Problem8 : Problem {
         for (int i = offset; i < strLength; i++) {
             char[] segment = number.Substring(i - offset, segmentLength).ToCharArray();
             int    product = 1;
-            
+
             for (int j = 0; j < segmentLength; j++) {
                 if (segment[j] == 0) break;
                 product *= Convert.ToInt32(segment[j]);

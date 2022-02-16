@@ -23,8 +23,7 @@ public class Problem5 : Problem {
 
             if (allTrue) {
                 found = true;
-            }
-            else {
+            } else {
                 candidate += n; // Minimal step size of largest divisor
             }
         }

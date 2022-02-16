@@ -31,13 +31,12 @@ public class Problem14 : Problem {
                 if (i % 2 == 0) {
                     i /= 2;
                     chainLength++;
-                }
-                else {
+                } else {
                     i = 3 * i + 1;
                     chainLength++;
                 }
             }
-            
+
             if (chainLength > maxChainLength) {
                 maxChainLength = chainLength;
                 maxChainNumber = startingNumber;

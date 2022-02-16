@@ -18,7 +18,7 @@ public class Problem2 : Problem {
         summands.Enqueue(1);
         summands.Enqueue(2);
         int nextFibonacci = 3;
-        
+
         while (nextFibonacci < n) {
             nextFibonacci = sumQueue(summands);
             summands.Enqueue(nextFibonacci);

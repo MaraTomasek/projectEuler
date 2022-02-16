@@ -3,7 +3,6 @@ using System.Diagnostics;
 namespace ConsoleApp1;
 
 public class Problem3 : Problem {
-
     public override string Main() {
         /* Largest prime factor
             The prime factors of 13195 are 5, 7, 13 and 29.
@@ -24,7 +23,7 @@ public class Problem3 : Problem {
         Dictionary<long, bool> isPrimeCache = new Dictionary<long, bool>();
         factors.Enqueue(number);
 
-        while (factors.Any()){
+        while (factors.Any()) {
             var factor = factors.Dequeue();
 
             // If key is cached, move to result list to avoid double checking same factors repeatedly
@@ -50,7 +49,7 @@ public class Problem3 : Problem {
 
     public static long GetSmallestDivisor(long number) {
         Debug.Assert(number > 0);
-        
+
         if (number == 1) return 1;
         if (number == 2) return PRIME;
 
