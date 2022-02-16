@@ -208,9 +208,7 @@ public class Problem13 : Problem {
 72107838435069186155435662884062257473692284509516
 20849603980134001723930671666823555245252804609722
 53503534226472524250874054075591789781264330331690";
-
-        // 10 digit long addition on sections + carry for next section
-        // return as strings
+        
         const int numberAmount      = 50;
         const int numberLength      = 100;
         const int segmentsPerNumber = 5;
@@ -231,6 +229,7 @@ public class Problem13 : Problem {
         string n1, n2;
         var    n3 = new System.Text.StringBuilder();
 
+        // n2 always equal or smaller string
         if (number1.Length >= number2.Length) {
             n1 = number1;
             n2 = number2;
@@ -243,13 +242,17 @@ public class Problem13 : Problem {
         int minStrLength = n2.Length;
         int difference   = maxStrLength - minStrLength;
 
+        if (difference > 0) {
+            n2 = n2.PadLeft(maxStrLength).Replace(" ", "0");
+        }
+
         n1 = Problem4.Reverse(n1);
         n2 = Problem4.Reverse(n2);
 
         int carry = 0;
 
-        // Add number by number until smaller string ends
-        for (int strIdx = 0; strIdx < minStrLength; strIdx++) {
+        // Add number by number
+        for (int strIdx = 0; strIdx < maxStrLength; strIdx++) {
             int c1  = Convert.ToInt32(n1.Substring(strIdx, 1));
             int c2  = Convert.ToInt32(n2.Substring(strIdx, 1));
             int sum = c1 + c2 + carry;
@@ -259,25 +262,6 @@ public class Problem13 : Problem {
         }
 
         // Add rest of larger number with carry
-        string s1 = n1.Substring(minStrLength, difference);
-        if (carry > 0) {
-            if (difference > 0) {
-                for (int strIdx = 0; strIdx < difference; strIdx++) {
-                    int c1  = Convert.ToInt32(s1.Substring(strIdx, 1));
-                    int sum = c1 + carry;
-
-                    n3.Append(sum % 10);
-                    carry = sum / 10;
-                }
-            } else {
-                n3.Append(carry);
-                carry = 0;
-            }
-        } else {
-            n3.Append(s1);
-        }
-
-        // Add final carry
         if (carry > 0) {
             n3.Append(carry);
         }
