@@ -1,5 +1,3 @@
-using Microsoft.VisualBasic.CompilerServices;
-
 namespace ConsoleApp1;
 
 public class Problem13 : Problem {
@@ -210,22 +208,20 @@ public class Problem13 : Problem {
 53503534226472524250874054075591789781264330331690";
         
         const int numberAmount      = 50;
-        const int numberLength      = 100;
-        const int segmentsPerNumber = 5;
         const int segmentLength     = 10;
 
         string[] numbersArr = numberList.Split("\n");
         string   runningSum = numbersArr[0];
 
         for (int numberIdx = 1; numberIdx < numberAmount; numberIdx++) {
-            runningSum = stringAddition(runningSum, numbersArr[numberIdx]);
+            runningSum = StringAddition(runningSum, numbersArr[numberIdx]);
         }
 
         string substring = runningSum.Substring(0, segmentLength);
         return substring;
     }
 
-    public string stringAddition(string number1, string number2) {
+    public static string StringAddition(string number1, string number2) {
         string n1, n2;
         var    n3 = new System.Text.StringBuilder();
 
