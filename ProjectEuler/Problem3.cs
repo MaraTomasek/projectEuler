@@ -23,7 +23,7 @@ class Problem3 : Problem {
         Dictionary<long, bool> isPrimeCache = new Dictionary<long, bool>();
         factors.Enqueue(number);
 
-        while (factors.Count() > 0){
+        while (factors.Any()){
             var factor = factors.Dequeue();
 
             // If key is cached, move to result list to avoid double checking same factors repeatedly
