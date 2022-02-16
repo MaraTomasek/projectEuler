@@ -44,7 +44,7 @@ public class Problem16 : Problem {
         var    additions = subResults.Count;
         string result    = subResults.Pop();
         while (subResults.Any()) {
-            result = Problem13.stringAddition(result, subResults.Pop());
+            result = Problem13.StringAddition(result, subResults.Pop());
         }
 
         return result;
