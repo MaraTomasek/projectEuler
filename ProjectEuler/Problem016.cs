@@ -10,14 +10,15 @@ public class Problem16 : Problem {
         const int exponent   = 1000;
 
         string numberStr = baseNumber.ToString();
-        for (int i = 0; i < exponent; i++) {
+        for (int i = 1; i < exponent; i++) {
+            //Console.WriteLine(numberStr);
             numberStr = stringMultBy2(numberStr);
         }
 
-        return sumOfDigits(numberStr).ToString();
+        return SumOfDigits(numberStr).ToString();
     }
 
-    public static int sumOfDigits(string str) {
+    private static int SumOfDigits(string str) {
         char[] chStr = str.ToCharArray();
         int    sum   = 0;
         foreach (var character in chStr) {
@@ -28,23 +29,24 @@ public class Problem16 : Problem {
     }
 
     private string stringMultBy2(string numberStr) {
-        var    subResults = new Stack<string>(); // Stack so we start with large numbers
+        var subResults = new Stack<string>(); // Stack so we start with large numbers
         string numStr     = Problem4.Reverse(numberStr);
 
         for (int i = 0; i < numStr.Length; i++) {
             int    digit        = Convert.ToInt32(numStr.Substring(i, 1));
+            if (digit == 0) continue;
             int    subResult    = digit * 2;
             string subResultStr = subResult.ToString();
 
-            subResultStr = subResultStr.PadRight(i).Replace(" ", "0");
+            subResultStr = subResultStr.PadRight(i + subResultStr.Length).Replace(" ", "0");
 
             subResults.Push(subResultStr);
         }
 
-        var    additions = subResults.Count;
-        string result    = subResults.Pop();
+        string result = subResults.Pop();
         while (subResults.Any()) {
             result = Problem13.StringAddition(result, subResults.Pop());
+            
         }
 
         return result;
