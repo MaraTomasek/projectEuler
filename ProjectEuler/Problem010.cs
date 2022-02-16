@@ -1,7 +1,7 @@
 namespace ConsoleApp1;
 
 public class Problem10 : Problem {
-    public override int Main() {
+    public override string Main() {
         /* Summation of primes
             The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 
@@ -16,6 +16,6 @@ public class Problem10 : Problem {
             }
         }
 
-        return sum;
+        return sum.ToString();
     }
 }

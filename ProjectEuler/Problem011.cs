@@ -1,7 +1,7 @@
 namespace ConsoleApp1;
 
 public class Problem11 : Problem {
-    public override int Main() {
+    public override string Main() {
         /* Largest product in a grid
             In the 20×20 grid below, four numbers along a diagonal line have been marked in red.
             
@@ -108,6 +108,6 @@ public class Problem11 : Problem {
             }
         }
 
-        return maxProduct;
+        return maxProduct.ToString();
     }
 }

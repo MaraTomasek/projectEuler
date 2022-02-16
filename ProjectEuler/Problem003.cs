@@ -4,7 +4,7 @@ namespace ConsoleApp1;
 
 public class Problem3 : Problem {
 
-    public override int Main() {
+    public override string Main() {
         /* Largest prime factor
             The prime factors of 13195 are 5, 7, 13 and 29.
 
@@ -15,7 +15,7 @@ public class Problem3 : Problem {
         List<long> primeFactors = GetPrimeFactors(toCheck);
         primeFactors.Sort();
 
-        return Convert.ToInt32(primeFactors.Last());
+        return primeFactors.Last().ToString();
     }
 
     private List<long> GetPrimeFactors(long number) {

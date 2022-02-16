@@ -1,7 +1,7 @@
 namespace ConsoleApp1;
 
 public class Problem6 : Problem {
-    public override int Main() {
+    public override string Main() {
         /* Sum square difference
             The sum of the squares of the first ten natural numbers is,
                 1² + 2² + ... + 10² = 385
@@ -27,6 +27,6 @@ public class Problem6 : Problem {
         squareOfSum = Convert.ToInt32(Math.Pow(squareOfSum, 2));
         difference  = squareOfSum - sumOfSquares;
         
-        return difference;
+        return difference.ToString();
     }
 }

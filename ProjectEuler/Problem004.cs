@@ -1,7 +1,7 @@
 namespace ConsoleApp1;
 
 public class Problem4 : Problem {
-    public override int Main() {
+    public override string Main() {
         /* Largest palindrome product
             A palindromic number reads the same both ways. The largest palindrome made from 
             the product of two 2-digit numbers is 9009 = 91 × 99.
@@ -15,12 +15,12 @@ public class Problem4 : Problem {
                 string revCalcStr = Reverse(calcStr);
 
                 if (calcStr == revCalcStr) {
-                    return Convert.ToInt32(calcStr);
+                    return calcStr;
                 }
             }
         }
 
-        return 0;
+        return "No Result";
     }
 
     public static string Reverse(string s) {

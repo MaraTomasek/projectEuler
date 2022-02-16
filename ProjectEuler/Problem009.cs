@@ -1,7 +1,7 @@
 namespace ConsoleApp1;
 
 public class Problem9 : Problem {
-    public override int Main() {
+    public override string Main() {
         /* Special Pythagorean triplet
             A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
             a² + b² = c²
@@ -21,11 +21,11 @@ public class Problem9 : Problem {
                 if (c < b) break;
 
                 if (expr == Convert.ToInt32(Math.Pow(c, 2))) {
-                    return a * b * c;
+                    return (a * b * c).ToString();
                 }
             }
         }
 
-        return 0;
+        return "No Result";
     }
 }

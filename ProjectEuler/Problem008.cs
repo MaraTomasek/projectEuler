@@ -1,7 +1,7 @@
 namespace ConsoleApp1;
 
 public class Problem8 : Problem {
-    public override int Main() {
+    public override string Main() {
         /* Largest product in a series
             The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
                 73167176531330624919225119674426574742355349194934
@@ -68,6 +68,6 @@ public class Problem8 : Problem {
             }
         }
 
-        return maxProduct;
+        return maxProduct.ToString();
     }
 }

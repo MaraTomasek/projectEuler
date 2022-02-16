@@ -1,7 +1,7 @@
 namespace ConsoleApp1;
 
 public class Problem5 : Problem {
-    public override int Main() {
+    public override string Main() {
         /* Smallest multiple
             2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 
@@ -29,6 +29,6 @@ public class Problem5 : Problem {
             }
         }
 
-        return candidate;
+        return candidate.ToString();
     }
 }
