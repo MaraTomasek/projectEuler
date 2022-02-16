@@ -7,7 +7,7 @@ static class Program {
     public static void Main(string[] args) {
         int       projectNumber     = Convert.ToInt32(args[0]);
         List<int> completedProblems = new List<int>();
-        for (int i = 1; i <= 16; i++) {
+        for (int i = 1; i <= 17; i++) {
             completedProblems.Add(i);
         }
 
@@ -74,6 +74,9 @@ static class Program {
                 break;
             case 16:
                 p = new Problem16();
+                break;
+            case 17:
+                p = new Problem17();
                 break;
         }
 
