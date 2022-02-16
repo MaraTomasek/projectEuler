@@ -12,7 +12,7 @@ class Problem7 : Problem {
         const int nthPrimeIdx = 10001;
         int       nthPrime    = 0;
         int       iterator    = 2;
-        
+
         for (int primeCounter = 0; primeCounter < nthPrimeIdx; iterator++) {
             if (GetSmallestDivisor(iterator) == PRIME) {
                 primeCounter++;
