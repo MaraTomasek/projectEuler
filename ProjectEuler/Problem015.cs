@@ -24,7 +24,7 @@ public class Problem15 : Problem {
     private static bool[,] CreateAdjMatrix() {
         bool[,] adjMatrix = new bool[Nodes, Nodes];
         for (int i = 0; i < Nodes; i++) {
-            if (i % 21 != 0) {
+            if (i % 20 != 0) {
                 adjMatrix[i, i + 1] = true;
             }
 
