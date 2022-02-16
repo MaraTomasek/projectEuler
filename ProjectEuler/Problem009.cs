@@ -1,6 +1,6 @@
 namespace ConsoleApp1;
 
-class Problem9 : Problem {
+public class Problem9 : Problem {
     public override int Main() {
         /* Special Pythagorean triplet
             A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,

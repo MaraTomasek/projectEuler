@@ -1,6 +1,6 @@
 namespace ConsoleApp1;
 
-class Problem6 : Problem {
+public class Problem6 : Problem {
     public override int Main() {
         /* Sum square difference
             The sum of the squares of the first ten natural numbers is,

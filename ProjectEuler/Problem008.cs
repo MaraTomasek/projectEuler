@@ -1,6 +1,6 @@
 namespace ConsoleApp1;
 
-class Problem8 : Problem {
+public class Problem8 : Problem {
     public override int Main() {
         /* Largest product in a series
             The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.

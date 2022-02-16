@@ -1,7 +1,8 @@
+using System.Diagnostics;
+
 namespace ConsoleApp1;
 
-class Problem3 : Problem {
-    private const int PRIME = -1;
+public class Problem3 : Problem {
 
     public override int Main() {
         /* Largest prime factor
@@ -47,7 +48,12 @@ class Problem3 : Problem {
         return primeFactors;
     }
 
-    private long GetSmallestDivisor(long number) {
+    public static long GetSmallestDivisor(long number) {
+        Debug.Assert(number > 0);
+        
+        if (number == 1) return 1;
+        if (number == 2) return PRIME;
+
         long limit = number / 2;
 
         if (number % 2 == 0) {

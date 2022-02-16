@@ -1,6 +1,6 @@
 namespace ConsoleApp1;
 
-class Problem4 : Problem {
+public class Problem4 : Problem {
     public override int Main() {
         /* Largest palindrome product
             A palindromic number reads the same both ways. The largest palindrome made from 
