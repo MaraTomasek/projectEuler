@@ -4,7 +4,7 @@ static class Program {
     public static void Main(string[] args) {
         int       projectNumber     = Convert.ToInt32(args[0]);
         List<int> completedProblems = new List<int>();
-        for (int i = 1; i <= 15; i++) {
+        for (int i = 1; i <= 16; i++) {
             completedProblems.Add(i);
         }
 
@@ -12,15 +12,12 @@ static class Program {
             Console.WriteLine("Solution to Problem {0}: {1}", projectNumber, RunProblem(projectNumber));
         }
         else {
-            Console.WriteLine("No solution programmed for this exercise.");
+            Console.WriteLine("No solution programmed for exercise {0}.", projectNumber);
             Console.WriteLine("Solutions currently exist for:");
             foreach (var problem in completedProblems) {
                 Console.Write("{0}, ", problem);
-                Console.WriteLine("");
             }
         }
-
-        Console.Read();
     }
 
     private static string RunProblem(int projectNumber) {
@@ -71,6 +68,9 @@ static class Program {
                 break;
             case 15:
                 p = new Problem15();
+                break;
+            case 16:
+                p = new Problem16();
                 break;
         }
 
