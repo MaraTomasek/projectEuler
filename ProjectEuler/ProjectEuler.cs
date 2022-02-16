@@ -1,5 +1,8 @@
 namespace ConsoleApp1;
 
+// TODO Parallelize Problems 14, 15
+// TODO Find something better than switch to start solutions
+
 static class Program {
     public static void Main(string[] args) {
         int       projectNumber     = Convert.ToInt32(args[0]);
