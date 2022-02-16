@@ -5,81 +5,48 @@ namespace ConsoleApp1;
 
 static class Program {
     public static void Main(string[] args) {
-        int       projectNumber     = Convert.ToInt32(args[0]);
-        List<int> completedProblems = new List<int>();
+        int       projectId           = Convert.ToInt32(args[0]);
+        List<int> completedProblemIds = new List<int>();
+
         for (int i = 1; i <= 17; i++) {
-            completedProblems.Add(i);
+            completedProblemIds.Add(i);
         }
 
-        if (completedProblems.Contains(projectNumber)) {
-            Console.WriteLine("Solution to Problem {0}: {1}", projectNumber, RunProblem(projectNumber));
-        }
-        else {
-            Console.WriteLine("No solution programmed for exercise {0}.", projectNumber);
+        if (completedProblemIds.Contains(projectId)) {
+            string[] solution = RunProblem(projectId);
+            Console.Write("Problem {0}: {1}{2}\n\n", projectId, solution[1], solution[2]);
+            Console.WriteLine("Solution: {0}", solution[0]);
+        } else {
+            Console.WriteLine("No solution programmed for exercise {0}.", projectId);
             Console.WriteLine("Solutions currently exist for:");
-            foreach (var problem in completedProblems) {
+            foreach (var problem in completedProblemIds) {
                 Console.Write("{0}, ", problem);
             }
         }
     }
 
-    private static string RunProblem(int projectNumber) {
-        Problem? p = null;
+    private static string[] RunProblem(int projectNumber) {
+        Dictionary<int, Problem> problems = new Dictionary<int, Problem> {
+            {1, new Problem1()},
+            {2, new Problem2()},
+            {3, new Problem3()},
+            {4, new Problem4()},
+            {5, new Problem5()},
+            {6, new Problem6()},
+            {7, new Problem7()},
+            {8, new Problem8()},
+            {9, new Problem9()},
+            {10, new Problem10()},
+            {11, new Problem11()},
+            {12, new Problem12()},
+            {13, new Problem13()},
+            {14, new Problem14()},
+            {15, new Problem15()},
+            {16, new Problem16()},
+            {17, new Problem17()}
+        };
 
-        switch (projectNumber) {
-            case 1:
-                p = new Problem1();
-                break;
-            case 2:
-                p = new Problem2();
-                break;
-            case 3:
-                p = new Problem3();
-                break;
-            case 4:
-                p = new Problem4();
-                break;
-            case 5:
-                p = new Problem5();
-                break;
-            case 6:
-                p = new Problem6();
-                break;
-            case 7:
-                p = new Problem7();
-                break;
-            case 8:
-                p = new Problem8();
-                break;
-            case 9:
-                p = new Problem9();
-                break;
-            case 10:
-                p = new Problem10();
-                break;
-            case 11:
-                p = new Problem11();
-                break;
-            case 12:
-                p = new Problem12();
-                break;
-            case 13:
-                p = new Problem13();
-                break;
-            case 14:
-                p = new Problem14();
-                break;
-            case 15:
-                p = new Problem15();
-                break;
-            case 16:
-                p = new Problem16();
-                break;
-            case 17:
-                p = new Problem17();
-                break;
-        }
-
-        return p!.Main();
+        Problem p = problems[projectNumber];
+        return new string[] {p.Main(), p.Headline, p.Description};
     }
 }

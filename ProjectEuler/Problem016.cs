@@ -1,11 +1,16 @@
 namespace ConsoleApp1;
 
 public class Problem16 : Problem {
-    public override string Main() {
-        /* Power digit sum
-            2^(15) = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
-            What is the sum of the digits of the number 2^(1000)? */
+    private static string Headline = @"Power digit sum";
 
+    private static string Description = @"
+    2^(15) = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
+    What is the sum of the digits of the number 2^(1000)?";
+
+    public Problem16() : base(Headline, Description) {
+    }
+
+    public override string Main() {
         const int baseNumber = 2;
         const int exponent   = 1000;
 
@@ -29,11 +34,11 @@ public class Problem16 : Problem {
     }
 
     private string stringMultBy2(string numberStr) {
-        var subResults = new Stack<string>(); // Stack so we start with large numbers
+        var    subResults = new Stack<string>(); // Stack so we start with large numbers
         string numStr     = Problem4.Reverse(numberStr);
 
         for (int i = 0; i < numStr.Length; i++) {
-            int    digit        = Convert.ToInt32(numStr.Substring(i, 1));
+            int digit = Convert.ToInt32(numStr.Substring(i, 1));
             if (digit == 0) continue;
             int    subResult    = digit * 2;
             string subResultStr = subResult.ToString();
@@ -46,7 +51,6 @@ public class Problem16 : Problem {
         string result = subResults.Pop();
         while (subResults.Any()) {
             result = Problem13.StringAddition(result, subResults.Pop());
-            
         }
 
         return result;

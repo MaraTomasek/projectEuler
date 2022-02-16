@@ -1,16 +1,21 @@
 namespace ConsoleApp1;
 
 public class Problem9 : Problem {
+    private static string Headline = @"Special Pythagorean triplet";
+
+    private static string Description = @"
+    A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+        a² + b² = c²
+
+    For example, 3² + 4² = 9 + 16 = 25 = 5².
+
+    There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+    Find the product abc.";
+
+    public Problem9() : base(Headline, Description) {
+    }
+
     public override string Main() {
-        /* Special Pythagorean triplet
-            A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
-            a² + b² = c²
-
-            For example, 3² + 4² = 9 + 16 = 25 = 5².
-
-            There exists exactly one Pythagorean triplet for which a + b + c = 1000.
-            Find the product abc. */
-
         const int n = 1000;
 
         for (int a = 1; a < n - 1; a++) {

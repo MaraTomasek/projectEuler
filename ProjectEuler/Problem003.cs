@@ -3,12 +3,17 @@ using System.Diagnostics;
 namespace ConsoleApp1;
 
 public class Problem3 : Problem {
+    private static string Headline = @"Largest prime factor";
+
+    private static string Description = @"
+    The prime factors of 13195 are 5, 7, 13 and 29.
+
+    What is the largest prime factor of the number 600851475143?";
+
+    public Problem3() : base(Headline, Description) {
+    }
+
     public override string Main() {
-        /* Largest prime factor
-            The prime factors of 13195 are 5, 7, 13 and 29.
-
-            What is the largest prime factor of the number 600851475143 ? */
-
         const long toCheck = 600851475143;
 
         List<long> primeFactors = GetPrimeFactors(toCheck);
@@ -55,6 +60,7 @@ public class Problem3 : Problem {
 
         long limit = number / 2;
 
+        // IDE says this is always false but I don't see how
         if (number % 2 == 0) {
             return 2;
         }

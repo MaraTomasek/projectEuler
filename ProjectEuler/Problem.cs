@@ -1,10 +1,14 @@
 namespace ConsoleApp1;
 
-public class Problem {
-    public const int PRIME = -1; // For exercises which deal with primes 
+public abstract class Problem {
+    public          string Headline;
+    public          string Description;
+    protected const int    PRIME = -1; // For exercises which deal with primes 
 
-    public virtual string Main() {
-        Console.WriteLine("Default Constructor");
-        return "No Result";
+    protected Problem(string headline, string description) {
+        Headline    = headline;
+        Description = description;
     }
+
+    public abstract string Main();
 }
