@@ -12,63 +12,22 @@ public class Problem15 : Problem {
     public Problem15() : base(Headline, Description) {
     }
 
-    // NOTE: 20x20 Grid has 21x21 Nodes
-    private const    int     Height      = 21;
-    private const    int     Width       = 21;
-    private const    int     Nodes       = Height * Width;
-    private const    int     StartNodeId = 0;
-    private const    int     GoalNodeId  = 440;
-    private readonly bool[,] AdjMatrix   = CreateAdjMatrix();
+    private const    int    Height      = 21;
+    private const    int    Width       = 21;
+    private readonly int[,] _pathMatrix = new int[Height, Width];
 
     public override string Main() {
-        return CountPaths().ToString();
-    }
+        for (int i = 0; i < Width; i++) {
+            _pathMatrix[0, i] = 1;
+            _pathMatrix[i, 0] = 1;
+        }
 
-    private static bool[,] CreateAdjMatrix() {
-        bool[,] adjMatrix = new bool[Nodes, Nodes];
-        for (int i = 0; i < Nodes; i++) {
-            if (i % 20 != 0) {
-                adjMatrix[i, i + 1] = true;
-            }
-
-            if (i < 420) {
-                adjMatrix[i, i + Width] = true;
+        for (int col = 1; col < Width; col++) {
+            for (int row = 1; row < Height; row++) {
+                _pathMatrix[col, row] = _pathMatrix[col, row - 1] + _pathMatrix[col - 1, row];
             }
         }
 
-        return adjMatrix;
-    }
-
-    private List<int> GetNeighbors(int nodeId) {
-        List<int> neighbors = new List<int>();
-        for (int node = 0; node < Nodes; node++) {
-            if (AdjMatrix[nodeId, node]) {
-                neighbors.Add(node);
-            }
-        }
-
-        return neighbors;
-    }
-
-
-    private int CountPaths() {
-        int        paths    = 0;
-        Stack<int> dfsStack = new Stack<int>();
-        dfsStack.Push(StartNodeId);
-
-        while (dfsStack.Any()) {
-            var currentNodeId = dfsStack.Pop();
-
-            if (currentNodeId == GoalNodeId) {
-                paths++;
-            } else {
-                List<int> neighbors = GetNeighbors(currentNodeId);
-                foreach (var neighbor in neighbors) {
-                    dfsStack.Push(neighbor);
-                }
-            }
-        }
-
-        return paths;
+        return _pathMatrix[20, 20].ToString();
     }
 }
