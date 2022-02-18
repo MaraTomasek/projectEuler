@@ -1,12 +1,17 @@
 namespace ConsoleApp1; 
 
 public class ProblemXX : Problem{
-    private static string Headline = @"";
+    private static string Headline    = @"";
+    
     private static string Description = @"";
-    private static string Solution = @"";
-    public ProblemX() : base(Headline, Description) {
+    
+    private static string Solution    = @"";
+    
+    public ProblemX() : base(Headline, Description, Solution) {
         }
+        
     public override string Main() {
         
+        return "No Result";
     }
 }
