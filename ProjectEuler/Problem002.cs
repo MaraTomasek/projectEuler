@@ -12,7 +12,12 @@ public class Problem2 : Problem {
     By considering the terms in the Fibonacci sequence whose values do not exceed four million, 
     find the sum of the even-valued terms.";
 
-    public Problem2() : base(Headline, Description) {
+    private static string Solution = @"
+    Generate new Fibonacci numbers until the 4.000.000 limit, check each for evenness and add to the sum if even.
+    Generation uses a Queue, which let's us keep track of both terms easily
+    by queueing new terms and dequeuing old ones";
+    
+    public Problem2() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {

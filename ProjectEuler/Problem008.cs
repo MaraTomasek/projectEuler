@@ -28,8 +28,12 @@ public class Problem8 : Problem {
     
     Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. 
     What is the value of this product?";
+    
+    private static string Solution = @"
+    Iterate through the large number in segments of 13. If there is a 0 in this segment, 
+    skip it entirely, because the product will be 0.";
 
-    public Problem8() : base(Headline, Description) {
+    public Problem8() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {

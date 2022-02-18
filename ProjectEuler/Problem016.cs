@@ -6,8 +6,26 @@ public class Problem16 : Problem {
     private static string Description = @"
     2^(15) = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
     What is the sum of the digits of the number 2^(1000)?";
+    
+    private static string Solution = @"
+    First of all, 2^(1000) is way too large for a normal datatype.
+    So I implemented a string-based multiplication method akin to multiplying by hand.
+    For example:
 
-    public Problem16() : base(Headline, Description) {
+        1178 * 2 = 2356
+            16
+        +  14x
+        +  2xx
+        + 2xxx
+          ----
+          2356
+        
+    x here represents padding with 0.
+
+    The result is a number ~1*10^(301), 
+    but it is easy to add up its digits, because it is already stored in a string.";
+
+    public Problem16() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {
@@ -16,7 +34,6 @@ public class Problem16 : Problem {
 
         string numberStr = baseNumber.ToString();
         for (int i = 1; i < exponent; i++) {
-            //Console.WriteLine(numberStr);
             numberStr = stringMultBy2(numberStr);
         }
 

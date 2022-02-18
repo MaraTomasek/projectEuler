@@ -19,17 +19,23 @@ public class Problem14 : Problem {
     Which starting number, under one million, produces the longest chain?
     NOTE: Once the chain starts the terms are allowed to go above one million.";
 
-    public Problem14() : base(Headline, Description) {
+    private static string Solution = @"
+    I have not figured out a smart solution for this yet, 
+    so here is a stupid one that has not yet delivered a result,
+    because it took forever too run and I'm impatient.
+    It checks every number from 1 to 1.000.000 and keeps the longest chain.
+
+    It would benefit from parallelization.";
+
+    public Problem14() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {
         const int n              = 1000000;
         int       maxChainLength = 0;
+        int       maxChainNumber = 0;
 
-        int maxChainNumber = 0;
-        for (int startingNumber = 1;
-             startingNumber < n;
-             startingNumber++) {
+        for (int startingNumber = 1; startingNumber < n; startingNumber++) {
             int i           = startingNumber;
             int chainLength = 0;
 
@@ -43,10 +49,9 @@ public class Problem14 : Problem {
                 }
             }
 
-            if (chainLength > maxChainLength) {
-                maxChainLength = chainLength;
-                maxChainNumber = startingNumber;
-            }
+            if (chainLength <= maxChainLength) continue;
+            maxChainLength = chainLength;
+            maxChainNumber = startingNumber;
         }
 
         return maxChainNumber.ToString();

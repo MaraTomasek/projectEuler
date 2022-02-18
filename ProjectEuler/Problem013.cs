@@ -106,8 +106,12 @@ public class Problem13 : Problem {
         72107838435069186155435662884062257473692284509516
         20849603980134001723930671666823555245252804609722
         53503534226472524250874054075591789781264330331690";
+    
+    private static string Solution = @"
+    These numbers are way too large to fit into a normal datatype. Instead keep them as strings and add two at a time.
+    Instead of normal addition, add them up character by character (take care of the carry).";
 
-    public Problem13() : base(Headline, Description) {
+    public Problem13() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {

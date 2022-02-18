@@ -1,7 +1,6 @@
 namespace ConsoleApp1;
 
-// TODO Parallelize Problems 14, 15
-// TODO Find something better than switch to start solutions
+// TODO Parallelize Problem 14 or find a smarter solution
 
 static class Program {
     public static void Main(string[] args) {
@@ -15,7 +14,7 @@ static class Program {
         if (completedProblemIds.Contains(projectId)) {
             string[] solution = RunProblem(projectId);
             Console.Write("Problem {0}: {1}{2}\n\n", projectId, solution[1], solution[2]);
-            Console.WriteLine("Solution: {0}", solution[0]);
+            Console.WriteLine("Solution: {0}, {1}", solution[0], solution[3]);
         } else {
             Console.WriteLine("No solution programmed for exercise {0}.", projectId);
             Console.WriteLine("Solutions currently exist for:");
@@ -47,6 +46,6 @@ static class Program {
         };
 
         Problem p = problems[projectNumber];
-        return new string[] {p.Main(), p.Headline, p.Description};
+        return new string[] {p.Main(), p.Headline, p.Description, p.Solution};
     }
 }

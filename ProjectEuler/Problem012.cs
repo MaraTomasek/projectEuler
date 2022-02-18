@@ -22,8 +22,11 @@ public class Problem12 : Problem {
 
     We can see that 28 is the first triangle number to have over five divisors.
     What is the value of the first triangle number to have over five hundred divisors?";
+    
+    private static string Solution = @"
+    Keep generating new triangle numbers until one is found which has >500 divisors.";
 
-    public Problem12() : base(Headline, Description) {
+    public Problem12() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {

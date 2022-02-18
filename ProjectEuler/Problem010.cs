@@ -7,8 +7,12 @@ public class Problem10 : Problem {
     The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 
     Find the sum of all the primes below two million.";
+    
+    private static string Solution = @"
+    Find all primes below two million and sum them up. 
+    Reuse the prime function from Problem 3";
 
-    public Problem10() : base(Headline, Description) {
+    public Problem10() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {

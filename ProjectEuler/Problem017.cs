@@ -13,8 +13,13 @@ public class Problem17 : Problem {
     NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) 
     contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. 
     The use of ""and"" when writing out numbers is in compliance with British usage.";
+    
+    private static string Solution = @"
+    Count the letters for all the words, which make up any possible number in the requested range.
+    Use a couple of switch statements which can be used to technically build any numbers' word correctly, 
+    but we only use it to count the amount of letters instead.";
 
-    public Problem17() : base(Headline, Description) {
+    public Problem17() : base(Headline, Description, Solution) {
     }
 
     private readonly string[] _singleDigitNames = new string[] {

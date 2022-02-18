@@ -8,8 +8,12 @@ public class Problem4 : Problem {
     the product of two 2-digit numbers is 9009 = 91 × 99.
 
     Find the largest palindrome made from the product of two 3-digit numbers.";
+    
+    private static string Solution = @"
+    Start with 999×999, iterating towards zero. For each product, 
+    turn it into a string and check if it is the same in reverse.";
 
-    public Problem4() : base(Headline, Description) {
+    public Problem4() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {

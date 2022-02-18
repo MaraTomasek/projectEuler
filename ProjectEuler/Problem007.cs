@@ -6,8 +6,12 @@ class Problem7 : Problem {
     private static string Description = @"
     By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
     What is the 10 001st prime number? ";
+    
+    private static string Solution = @"
+    Iterate through the natural numbers and check for primeness until you find the 10.001st prime.
+    Simple and stupid.";
 
-    public Problem7() : base(Headline, Description) {
+    public Problem7() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {

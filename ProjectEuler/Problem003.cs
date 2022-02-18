@@ -9,8 +9,17 @@ public class Problem3 : Problem {
     The prime factors of 13195 are 5, 7, 13 and 29.
 
     What is the largest prime factor of the number 600851475143?";
+    
+    private static string Solution = @"
+    Have a Queue for finding factors. If a factor turns out to be prime, cache it. 
+    This way we dont have to check the whole number again the next time it turns up.
+    In checking a number for primeness, only check 2 and odd numbers as possible divisor 
+    - and only up until half the number itself.
 
-    public Problem3() : base(Headline, Description) {
+    In the end sort the list of found prime factors and choose the largest.";
+    
+
+    public Problem3() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {

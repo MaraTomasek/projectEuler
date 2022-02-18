@@ -14,8 +14,11 @@ public class Problem6 : Problem {
         
     Find the difference between the sum of the squares of the 
     first one hundred natural numbers and the square of the sum.";
+    
+    private static string Solution = @"
+    Just a simple calculation.";
 
-    public Problem6() : base(Headline, Description) {
+    public Problem6() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {

@@ -8,8 +8,15 @@ public class Problem15 : Problem {
     there are exactly 6 routes to the bottom right corner.
     
     How many such routes are there through a 20×20 grid?";
+    
+    private static string Solution = @"
+    A node in the grid is on as many routes as its two parent-nodes combined.
+    Following this, nodes in the top row and leftmost column only have 1 route to them.
+    From this every other route-amount can be inferred.
 
-    public Problem15() : base(Headline, Description) {
+    This is a smart solution instead of brute-forcing.";
+
+    public Problem15() : base(Headline, Description, Solution) {
     }
 
     private const    int    Height      = 21;

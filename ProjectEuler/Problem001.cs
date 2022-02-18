@@ -11,7 +11,11 @@ class Problem1 : Problem {
     
     Find the sum of all the multiples of 3 or 5 below 1000.";
 
-    public Problem1() : base(Headline, Description) {
+    private static string Solution = @"
+    Iterate through all numbers below 1000, and check if they're divisible through 3 or 5.
+    If they are, add them to the sum.";
+
+    public Problem1() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {

@@ -11,8 +11,15 @@ public class Problem9 : Problem {
 
     There exists exactly one Pythagorean triplet for which a + b + c = 1000.
     Find the product abc.";
+    
+    private static string Solution = @"
+    Iterate through a, then through b, which starts at a+1 due to the condition that a < b.
+    Now c has to fulfill these three conditions:
+        a < b < c 
+        c = 1000 - a - b
+        c² = a² + b².";
 
-    public Problem9() : base(Headline, Description) {
+    public Problem9() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {

@@ -3,6 +3,7 @@ namespace ConsoleApp1;
 public class ProblemXX : Problem{
     private static string Headline = @"";
     private static string Description = @"";
+    private static string Solution = @"";
     public ProblemX() : base(Headline, Description) {
         }
     public override string Main() {

@@ -32,7 +32,11 @@ public class Problem11 : Problem {
     What is the greatest product of four adjacent numbers in the same direction 
     (up, down, left, right, or diagonally) in the 20×20 grid?";
 
-    public Problem11() : base(Headline, Description) {
+    private static string Solution = @"
+    Turn the grid into an integer array and iterate in the requested directions in segments of four.
+    Break early if there is a 0 in the product.";
+
+    public Problem11() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {
@@ -76,6 +80,7 @@ public class Problem11 : Problem {
             for (int col = offset; col < width; col++) {
                 int product = 1;
                 for (int line = 0; line < offset; line++) {
+                    if (linearInt[row, col - line] == 0) break;
                     product *= linearInt[row, col - line];
                 }
 
@@ -90,6 +95,7 @@ public class Problem11 : Problem {
             for (int row = offset; row < height; row++) {
                 int product = 1;
                 for (int line = 0; line < offset; line++) {
+                    if (linearInt[row - line, col] == 0) break;
                     product *= linearInt[row - line, col];
                 }
 
@@ -104,6 +110,7 @@ public class Problem11 : Problem {
             for (int col = offset; col < width; col++) {
                 int product = 1;
                 for (int line = 0; line < offset; line++) {
+                    if (linearInt[row - line, col - line] == 0) break;
                     product *= linearInt[row - line, col - line];
                 }
 
