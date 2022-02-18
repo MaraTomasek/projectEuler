@@ -20,26 +20,30 @@ public class Problem14 : Problem {
     NOTE: Once the chain starts the terms are allowed to go above one million.";
 
     private static string Solution = @"
-    I have not figured out a smart solution for this yet, 
-    so here is a stupid one that has not yet delivered a result,
-    because it took forever too run and I'm impatient.
-    It checks every number from 1 to 1.000.000 and keeps the longest chain.
-
-    It would benefit from parallelization.";
+    Instead of calculating each sequence from start to finish, cache each previous result in a dictionary,
+    with the starting-number as key and its chain-length as value. This way, only a fragment of the entire chain 
+    needs to be calculated.
+    In the end find the maximum chain-length and its associated number.";
 
     public Problem14() : base(Headline, Description, Solution) {
     }
 
     public override string Main() {
-        const int n              = 1000000;
-        int       maxChainLength = 0;
-        int       maxChainNumber = 0;
+        const int n = 1000000;
 
-        for (int startingNumber = 1; startingNumber < n; startingNumber++) {
+        // Key: startingNumber, Value: ChainLength,
+        Dictionary<int, int> collatzCache = new Dictionary<int, int>() {{1, 1}};
+
+        for (int startingNumber = 2; startingNumber < n; startingNumber++) {
             int i           = startingNumber;
             int chainLength = 0;
 
             while (i != 1) {
+                if (collatzCache.ContainsKey(i)) {
+                    collatzCache.Add(startingNumber, chainLength + collatzCache[i]);
+                    break;
+                }
+
                 if (i % 2 == 0) {
                     i /= 2;
                     chainLength++;
@@ -48,11 +52,10 @@ public class Problem14 : Problem {
                     chainLength++;
                 }
             }
-
-            if (chainLength <= maxChainLength) continue;
-            maxChainLength = chainLength;
-            maxChainNumber = startingNumber;
         }
+
+        int maxChainNumber = collatzCache.Aggregate(
+            (tmpMax, compare) => tmpMax.Value > compare.Value ? tmpMax : compare).Key;
 
         return maxChainNumber.ToString();
     }
