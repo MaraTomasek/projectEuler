@@ -76,17 +76,17 @@ public class Problem18 : Problem {
                 triangleInt[i, j] = Convert.ToInt32(line[j]);
             }
         }
-        
+
         for (int i = 0; i < width; i++) {
             pathSum[height - 1, i] = triangleInt[height - 1, i];
         }
 
         for (int btt = height - 2; btt >= 0; btt--) {
-            for (int ltr = 0; ltr < btt; ltr++) {
+            for (int ltr = 0; ltr <= btt; ltr++) {
                 pathSum[btt, ltr] = triangleInt[btt, ltr] + Math.Max(pathSum[btt + 1, ltr], pathSum[btt + 1, ltr + 1]);
             }
         }
 
-        return pathSum[0,0].ToString();
+        return pathSum[0, 0].ToString();
     }
 }
