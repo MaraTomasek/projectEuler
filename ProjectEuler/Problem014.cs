@@ -40,7 +40,7 @@ public class Problem14 : Problem {
 
             while (i != 1) {
                 if (collatzCache.ContainsKey(i)) {
-                    collatzCache.Add(startingNumber, chainLength + collatzCache[i]);
+                    collatzCache.TryAdd(startingNumber, chainLength + collatzCache[i]);
                     break;
                 }
 
@@ -52,6 +52,8 @@ public class Problem14 : Problem {
                     chainLength++;
                 }
             }
+
+            collatzCache.TryAdd(startingNumber, chainLength);
         }
 
         int maxChainNumber = collatzCache.Aggregate(
