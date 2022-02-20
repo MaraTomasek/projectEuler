@@ -40,7 +40,7 @@ public class Problem16 : Problem {
         return SumOfDigits(numberStr).ToString();
     }
 
-    private static int SumOfDigits(string str) {
+    public static int SumOfDigits(string str) {
         char[] chStr = str.ToCharArray();
         int    sum   = 0;
         foreach (var character in chStr) {
