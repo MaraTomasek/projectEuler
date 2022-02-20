@@ -1,13 +1,11 @@
 namespace ConsoleApp1;
 
-// TODO Parallelize Problem 14 or find a smarter solution
-
 static class Program {
     public static void Main(string[] args) {
         int       projectId           = Convert.ToInt32(args[0]);
         List<int> completedProblemIds = new List<int>();
 
-        for (int i = 1; i <= 18; i++) {
+        for (int i = 1; i <= 19; i++) {
             completedProblemIds.Add(i);
         }
 
@@ -44,6 +42,7 @@ static class Program {
             {16, new Problem16()},
             {17, new Problem17()},
             {18, new Problem18()},
+            {19, new Problem19()}
         };
 
         Problem p = problems[projectNumber];
