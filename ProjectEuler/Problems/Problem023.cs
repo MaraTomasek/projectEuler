@@ -20,7 +20,10 @@ public class Problem23 : Problem {
 
     Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.";
 
-    private static string Solution = @"";
+    private static string Solution = @"
+    Firstly, get a list of all abundant numbers up to 28123.
+    Then Calculate the sums of all abundant numbers and add a dictionary-entry for them.
+    If there isn't an entry for them in the dictionary, add the number to the sum.";
 
     public Problem23() : base(Headline, Description, Solution) {
     }
@@ -29,8 +32,9 @@ public class Problem23 : Problem {
         const int n                = 28123;
         const int smallestAbundant = 12;
 
-        int nonAbundantSum  = 0;
+        var nonAbundantSum  = 0;
         var abundantNumbers = new List<int>();
+        var sumOfAbundants  = new Dictionary<int, bool>();
 
         for (var i = smallestAbundant; i <= n; i++) {
             if (IsAbundant(i)) abundantNumbers.Add(i);
@@ -38,31 +42,16 @@ public class Problem23 : Problem {
 
         var abundantNumbersCount = abundantNumbers.Count;
 
-        // Main Loop
-        for (var i = 1; i <= n; i++) {
-            var isSumOfAbundants = false;
-
-            for (var j = 0; j < abundantNumbersCount; j++) {
-                if (abundantNumbers[j] * 2 > i) break;
-
-                for (var k = j; k < abundantNumbersCount; k++) {
-                    var tempSum = abundantNumbers[j] + abundantNumbers[k];
-                    if (tempSum > i) {
-                        break;
-                    }
-
-                    if (tempSum == i) {
-                        isSumOfAbundants = true;
-                        break;
-                    }
-                }
-
-                if (isSumOfAbundants) {
-                    break;
-                }
+        for (var i = 0; i < abundantNumbersCount; i++) {
+            for (var j = i; j < abundantNumbersCount; j++) {
+                var tempSum = abundantNumbers[i] + abundantNumbers[j];
+                sumOfAbundants.TryAdd(tempSum, true);
             }
+        }
 
-            if (!isSumOfAbundants) nonAbundantSum += i;
+        for (int i = 1; i < n; i++) {
+            bool isAbundant                 = sumOfAbundants.ContainsKey(i);
+            if (!isAbundant) nonAbundantSum += i;
         }
 
         return nonAbundantSum.ToString();
