@@ -1,18 +1,22 @@
 namespace ConsoleApp1;
 
-static class Program {
+internal static class Program {
     public static void Main(string[] args) {
-        int       projectId           = Convert.ToInt32(args[0]);
-        List<int> completedProblemIds = new List<int>();
+        var       projectId           = Convert.ToInt32(args[0]);
+        var completedProblemIds = new List<int>();
 
-        for (int i = 1; i <= 23; i++) {
+        for (var i = 1; i <= 23; i++) {
             completedProblemIds.Add(i);
         }
 
         if (completedProblemIds.Contains(projectId)) {
-            string[] solution = RunProblem(projectId);
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+            var solution = RunProblem(projectId);
+            watch.Stop();
+
             Console.Write("Problem {0}: {1}{2}\n\n", projectId, solution[1], solution[2]);
-            Console.WriteLine("Solution: {0}, {1}", solution[0], solution[3]);
+            Console.WriteLine("Solution:\t{0}\nTime elapsed:\t{1}s\n\nExplanation:{2}", solution[0], watch.ElapsedMilliseconds/1000.0, solution[3]);
         } else {
             Console.WriteLine("No solution programmed for exercise {0}.", projectId);
             Console.WriteLine("Solutions currently exist for:");
@@ -23,7 +27,7 @@ static class Program {
     }
 
     private static string[] RunProblem(int projectNumber) {
-        Dictionary<int, Problem> problems = new Dictionary<int, Problem> {
+        var problems = new Dictionary<int, Problem> {
             {1, new Problem1()},
             {2, new Problem2()},
             {3, new Problem3()},
@@ -49,7 +53,7 @@ static class Program {
             {23, new Problem23()}
         };
 
-        Problem p = problems[projectNumber];
-        return new string[] {p.Main(), p.Headline, p.Description, p.Solution};
+        var p = problems[projectNumber];
+        return new[] {p.Main(), p.Headline, p.Description, p.Solution};
     }
 }
