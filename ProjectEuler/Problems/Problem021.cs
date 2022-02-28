@@ -42,17 +42,24 @@ public class Problem21 : Problem {
         return amicableNumbers.Sum().ToString();
     }
 
-    private List<int> FindDivisors(int number) {
+    public static List<int> FindProperDivisors(int number) {
         var divisors = new List<int>();
 
-        for (int i = 1; i <= number / 2; i++) {
-            if (number % i == 0) divisors.Add(i);
+        for (int i = 1; i <= Math.Sqrt(number); i++) {
+            if (number % i == 0) {
+                divisors.Add(i);
+                int otherDivisor = number / i;
+                
+                if (i != otherDivisor && i != 1) {
+                    divisors.Add(otherDivisor);
+                }
+            }
         }
 
         return divisors;
     }
 
     private int CalcDivisorSum(int number) {
-        return FindDivisors(number).Sum();
+        return FindProperDivisors(number).Sum();
     }
 }
