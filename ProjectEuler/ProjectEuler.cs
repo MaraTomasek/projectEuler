@@ -5,7 +5,7 @@ static class Program {
         int       projectId           = Convert.ToInt32(args[0]);
         List<int> completedProblemIds = new List<int>();
 
-        for (int i = 1; i <= 22; i++) {
+        for (int i = 1; i <= 23; i++) {
             completedProblemIds.Add(i);
         }
 
@@ -45,7 +45,8 @@ static class Program {
             {19, new Problem19()},
             {20, new Problem20()},
             {21, new Problem21()},
-            {22, new Problem22()}
+            {22, new Problem22()},
+            {23, new Problem23()}
         };
 
         Problem p = problems[projectNumber];
